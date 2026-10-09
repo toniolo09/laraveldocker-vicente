@@ -11,6 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('tarefas', function (Blueprint $table) {
+            $table->id();
+            $table->string('titulo');
+            $table->string('descricao');
+            $table->timestamp('concluida')->default(false);
+            $table->timestamps();
+            $table->SoftDeletes();
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
