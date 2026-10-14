@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TarefasRequest;
+use App\Models\Tarefa;
 use Illuminate\Http\Request;
 
 class TarefaController extends Controller
@@ -25,9 +27,10 @@ class TarefaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TarefasRequest $request)
     {
-        dd($request);
+        $tarefa = Tarefa::create($request->all());
+        return response()->json($tarefa, 201);
     }
 
     /**
